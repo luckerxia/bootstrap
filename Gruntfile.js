@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-ngdocs');
   grunt.loadNpmTasks('grunt-ddescribe-iit');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Project configuration.
   grunt.util.linefeed = '\n';
@@ -49,6 +50,20 @@ module.exports = function(grunt) {
         files: ['src/**/*.js'],
         //we don't need to jshint here, it slows down everything else
         tasks: ['karma:watch:run']
+      }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 7000,
+          base: '',
+          keepalive: true,
+          open:{
+            target: 'http://localhost:7000/examples'//,
+            //appName: 'index.html',
+            //callback: function(){}
+          }
+        }
       }
     },
     concat: {
